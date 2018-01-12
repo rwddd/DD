@@ -1,25 +1,15 @@
 #include <iostream>
 #include <cmath>
-
 using namespace std;
 const double L = 0.0000001;
 const int NB = 200000;
-/*
-double f(double r,double c,int d, double FV,double PV,int N){
+
+double f(double r,double c,double d, double FV,double PV,int N){
 double result;
-result=((c)/r)*pow(1+r,1-d)+(((FV/(1+r))-c/r)/(pow(1+r,N+d-1)))-PV;
+result=(c/r)*pow(1+r,1-d)+((FV-(c/r)))/(pow(1+r,N+d))-PV;
 return result;
-}*/
-
-double f(double r, double c, double d, double FV, double PV, int N) {
-	double result = 0.;
-	for (int i = 0; i <= N; i++) {
-		result += c / pow(1 + r, d + i);
-	}
-	result += FV / pow(1 + r, d + N);
-	result = result - PV;
-
 }
+
 double derive_f(double r, double c, double d, double FV, double PV, int N) {
 	double Y;
 	Y = (f(r + L, c, d, FV, PV, N) - f(r, c, d, FV, PV, N)) / L;
