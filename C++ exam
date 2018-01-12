@@ -41,7 +41,7 @@ int main() {
 	d1 = d;
 	YTM = Newton(0.1, c, d, FV, PV, N);
 	cout << endl << endl << endl << endl << "##################################################" << endl << "Coupon value is : " << c << endl << "Year fraction until next coupon payment is : " << d << endl <<
-		"Face value of a bond is: " << FV << endl << "Present value of a bond is : " << PV << endl
+		"Face value of the bond is: " << FV << endl << "Present value of the bond is : " << PV << endl
 		<< "Number of full years until maturity is : " << N << endl << endl << endl << "##################################################" << endl << "The yied to maturity is:  " << YTM << endl;
 	return 0;
 }
