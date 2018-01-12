@@ -33,7 +33,7 @@ int main() {
 	cin >> d;
 	cout << "Enter face value FV :" << endl;
 	cin >> FV;
-	cout << "Enter precent value PV :" << endl;
+	cout << "Enter present value PV :" << endl;
 	cin >> PV;
 	cout << "Enter number of full years until maturity N :" << endl;
 	cin >> N;
