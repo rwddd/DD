@@ -1,0 +1,47 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const double L = 0.0000001;
+const int NB = 200000;
+
+double f(double r,double c,double d, double FV,double PV,int N){
+double result;
+result=(c/r)*pow(1+r,1-d)+((FV-(c/r)))/(pow(1+r,N+d))-PV;
+return result;
+}
+
+double derive_f(double r, double c, double d, double FV, double PV, int N) {
+	double Y;
+	Y = (f(r + L, c, d, FV, PV, N) - f(r, c, d, FV, PV, N)) / L;
+	return Y;
+}
+
+double Newton(double r, double c, double d, double FV, double PV, int N) {
+	double r1 = r;
+	for (int i = 1; i <= NB; i++) {
+		r1 = r1 - (f(r1, c, d, FV, PV, N) / derive_f(r1, c, d, FV, PV, N));
+	}
+	return r1;
+}
+
+int main() {
+	double c, FV, PV, YTM, d, d1;
+	int N;
+	cout << "Enter coupon value C :" << endl;
+	cin >> c;
+	cout << "Enter year fraction d :" << endl;
+	cin >> d;
+	cout << "Enter face value FV :" << endl;
+	cin >> FV;
+	cout << "Enter present value PV :" << endl;
+	cin >> PV;
+	cout << "Enter number of full years until maturity N :" << endl;
+	cin >> N;
+	d1 = d;
+	YTM = Newton(0.1, c, d, FV, PV, N);
+	cout << endl << endl << endl << endl << "##################################################" << endl << "Coupon value is : " << c << endl << "Year fraction until next coupon payment is : " << d << endl <<
+		"Face value of a bond is: " << FV << endl << "Present value of a bond is : " << PV << endl
+		<< "Number of full years until maturity is : " << N << endl << endl << endl << "##################################################" << endl << "The yied to maturity is:  " << YTM << endl;
+	return 0;
+}
